@@ -1,7 +1,11 @@
-def hello_world(name):
+def hello_world(name="world"):
     print(f"Hello, {name}!")
 
 
 if __name__ == "__main__":
-    name = input("Enter your name: ")
-    hello_world(name)
+    try:
+        name = input("Enter your name: ").strip()
+    except EOFError:
+        name = ""
+        print()
+    hello_world(name or "world")
